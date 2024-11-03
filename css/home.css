@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Altera a fonte para uma mais moderna */
+    background-color: #f9f9f9; /* Cor de fundo suave */
+    color: #333; /* Cor do texto */
+}
+
+.container {
+    max-width: 1200px; /* Limita a largura do conteúdo */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    padding: 20px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+}
+
+.title {
+    font-size: 2.5em; /* Aumenta o tamanho do título */
+    color: #4CAF50; /* Cor verde para o título */
+    margin-bottom: 10px; /* Espaço abaixo do título */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra para dar destaque */
+}
+
+.subtitle {
+    font-size: 1.2em; /* Tamanho da fonte para o subtítulo */
+    color: #666; /* Cor do subtítulo */
+    margin-top: 0; /* Remove a margem superior */
+}
+
+h1, p {
+    transition: color 0.3s; /* Transição suave na mudança de cor */
+}
+
+h1:hover, p:hover {
+    color: #2E7D32; /* Altera a cor ao passar o mouse */
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2em; /* Reduz o tamanho do título em telas menores */
+    }
+
+    .subtitle {
+        font-size: 1em; /* Reduz o tamanho do subtítulo em telas menores */
+    }
+}

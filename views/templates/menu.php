@@ -1,7 +1,6 @@
 <nav>
     <ul>
         <li><a href="<?= ROOT ?>/">Home</a></li>
-        <li><a href="<?= ROOT ?>/faqs/">Perguntas Frequentes</a></li>
         <li><a href="<?= ROOT ?>/categories/">Categorias</a></li> 
         
         <?php if (isset($_SESSION["user_id"])): ?>
