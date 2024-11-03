@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Produto</title>
-    <link rel="stylesheet" href="<?= ROOT ?>/css/edit_products.css">
+    <link rel="stylesheet" href="/css/edit_products.css">
+    <link rel="stylesheet" href="/css/backoffice_menu.css">
 </head>
 <body>
+    <?php require('views/templates/backoffice_menu.php'); ?>
 
 <h1 class="page-title">Editar Produto</h1>
 

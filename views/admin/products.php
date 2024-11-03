@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
-    <link rel="stylesheet" href="<?= ROOT ?>/css/adminproducts.css"> 
+    <link rel="stylesheet" href="/css/adminproducts.css"> 
+    <link rel="stylesheet" href="/css/backoffice_menu.css">
     <script>
         function confirmDelete() {
             return confirm("Você realmente deseja excluir este produto?");
@@ -12,6 +13,7 @@
     </script>
 </head>
 <body>
+<?php require('views/templates/backoffice_menu.php'); ?>
 
 <h1 class="page-title">Produtos</h1>
 <a class="add-button" href="<?= ROOT ?>/admin/create_products">Adicionar Novo Produto</a>

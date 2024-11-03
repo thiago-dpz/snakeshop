@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Produto</title>
     <link rel="stylesheet" href="<?= ROOT ?>/css/create_product.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/css/backoffice_menu.css">
 </head>
 <body>
+    <?php require('views/templates/backoffice_menu.php'); ?>
 
 <h1 class="page-title">Adicionar Novo Produto</h1>
 
