@@ -4,7 +4,7 @@ require("base.php");
 
 class Orders extends Base {
 
-    public function getALL() {
+    public function getAll() {
         $query = $this->db->prepare("
             SELECT
                 orders.order_id, 
@@ -22,15 +22,15 @@ class Orders extends Base {
         return $query->fetchAll();
     }
 
-    public function getDetail($id) {
+    public function getDetail($order_id) {
         $query = $this->db->prepare("
             SELECT
                 o1.*,
-                u1.name AS buyer_name,
+                u1.name AS customer_name,
+                u1.email AS customer_email,
                 u1.street_address,
                 u1.postal_code,
                 u1.city,
-                u1.country,
                 u1.phone
             FROM
                 orders AS o1
@@ -39,11 +39,11 @@ class Orders extends Base {
             WHERE
                 o1.order_id = ?
         ");
-
-        $query->execute([$id]);
-
+    
+        $query->execute([$order_id]);
+    
         $order = $query->fetch();
-
+    
         if (!empty($order)) {
             $query = $this->db->prepare("
                 SELECT
@@ -58,11 +58,28 @@ class Orders extends Base {
                 WHERE
                     od.order_id = ?
             ");
-            
+    
             $query->execute([$order["order_id"]]);
-
-            $order["products"] = $query->fetchAll();
+    
+            $products = $query->fetchAll();
+            $total = 0;
+    
+            if (empty($products)) {
+                $order["products"] = [];
+            } else {
+                foreach ($products as $product) {
+                    $product['total'] = $product['quantity'] * $product['price_each']; 
+                    $total += $product['total']; 
+                    $order["products"][] = $product; 
+                }
+            }
+    
+            $order["total"] = $total; 
+        } else {
+            $order["products"] = []; 
+            $order["total"] = 0; 
         }
+    
         return $order;
     }
 
@@ -73,10 +90,7 @@ class Orders extends Base {
             VALUES(?, ?)
         ");
 
-        $query->execute([
-            $user_id,
-            $payment_reference
-        ]);
+        $query->execute([$user_id, $payment_reference]);
 
         return $this->db->lastInsertId();
     }
@@ -141,5 +155,17 @@ class Orders extends Base {
         ");
     
         return $query->execute([$id]);
+    }
+
+    public function updateOrder($order_id, $status, $payment_date = null, $shipping_date = null) {
+        $query = $this->db->prepare("
+            UPDATE orders
+            SET status = ?,
+                payment_date = ?,
+                shipping_date = ?
+            WHERE order_id = ?
+        ");
+        
+        return $query->execute([$status, $payment_date, $shipping_date, $order_id]);
     }
 }
