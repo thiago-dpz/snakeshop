@@ -37,7 +37,7 @@ DB_NAME="snakeshop"
 DB_USER="root"
 DB_PASSWORD=""
 
-No XAMPP, inicio o Apache e o MySQL. 
+No XAMPP, inicie o Apache e o MySQL. 
 Em http://localhost/phpmyadmin, importe a base de dados disponível na pasta do projeto.
 
 ## Visão Geral
